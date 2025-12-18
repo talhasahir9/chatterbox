@@ -229,7 +229,7 @@ def generate_tts_audio(
         print("No audio prompt provided; using default voice.")
         
     wav = current_model.generate(
-        text_input[:300],  # Truncate text to max chars
+        text_input[:300000],  # Truncate text to max chars
         language_id=language_id,
         **generate_kwargs
     )
@@ -251,7 +251,7 @@ with gr.Blocks() as demo:
             initial_lang = "fr"
             text = gr.Textbox(
                 value=default_text_for_ui(initial_lang),
-                label="Text to synthesize (max chars 300)",
+                label="Text to synthesize (max chars 300000)",
                 max_lines=5
             )
             
